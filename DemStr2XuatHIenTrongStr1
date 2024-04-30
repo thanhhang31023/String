@@ -1,0 +1,35 @@
+//Nhập vào 2 chuỗi str1 và str2. Hãy đếm xem str2 xuất hiện bao nhiêu lần trong str1.
+
+import java.util.Scanner;
+
+public class Main {
+    static int demSoLanXuatHien(String str1, String str2) {
+        int count = 0;
+        // Vị trí xuất hiện đầu tiên của str2 trong str1
+        int index = str1.indexOf(str2);
+
+        // Duyệt qua tất cả các vị trí xuất hiện của str2 trong str1
+        while (index != -1) {   // index= -1 khi không có str2 xuất hiện trong str1
+            // nếu có str2 xuất hiện trong str1 thì index có thể bằng vị trí 0 hoặc 1 hoặc ...
+            count++;
+            // Tìm vị trí xuất hiện tiếp theo của str2 trong str1
+            index = str1.indexOf(str2, index + 1);
+        }
+        return count;
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Nhập chuỗi str1: ");
+        String str1 = scanner.nextLine();
+        System.out.print("Nhập chuỗi str2: ");
+        String str2 = scanner.nextLine();
+
+        // Đếm số lần xuất hiện của str2 trong str1
+        int count = demSoLanXuatHien(str1, str2);
+
+        System.out.println("Số lần xuất hiện của chuỗi str2 trong str1: " + count);
+
+        scanner.close();
+    }
+}
