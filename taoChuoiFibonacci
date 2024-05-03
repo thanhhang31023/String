@@ -1,0 +1,31 @@
+//Viết một chương trình sử dụng StringBuilder để tạo ra chuỗi Fibonacci gồm n số (n được nhập từ bàn phím).
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nhập số n để tạo ra chuỗi Fibonacci gồm n số : ");
+        int n = scanner.nextInt();
+        scanner.close();
+
+        String dayFibonacci = taoChuoiFibonacci(n);
+
+        System.out.println("Chuỗi Fibonacci gồm " + n + " số:");
+        System.out.println(dayFibonacci);
+    }
+    public static String taoChuoiFibonacci(int n) {
+        StringBuilder fibonacci = new StringBuilder();
+        int soDauTien = 0;
+        int soThuHai = 1;
+
+        for (int i = 0; i < n; i++) {
+            fibonacci.append(soDauTien).append(" ");
+            int soTiepTheo = soDauTien + soThuHai;
+            soDauTien = soThuHai;
+            soThuHai = soTiepTheo;
+        }
+
+        return fibonacci.toString();
+    }
+}
